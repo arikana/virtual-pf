@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form action="register.php" method="post">
+        <input type="text" name="username" placeholder="별명" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">회원가입</button>
+    </form>
+
+    <!-- 중복 별명 경고 메시지를 표시하기 위한 블록 -->
+    <p id="error-message" style="color: red;">
+        <?php
+        // register.php에서 발생한 오류 메시지를 표시
+        if (isset($_GET['error'])) {
+            if ($_GET['error'] == 'username_taken') {
+                echo "이미 사용 중인 별명입니다. 다른 별명을 선택해 주세요.";
+            }
+        }
+        ?>
+    </p>
+
+    <p><a href="index.php">메인 페이지로 돌아가기</a></p>
+</body>
+</html>
